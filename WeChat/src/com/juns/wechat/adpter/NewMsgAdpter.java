@@ -112,17 +112,20 @@ public class NewMsgAdpter extends BaseAdapter {
 			ChatID = conversation.getUserName();
 			txt_del.setTag(ChatID);
 			if (conversation.isGroup()) {
+				img_avar.setImageResource(R.drawable.defult_group);
 				GroupInfo info = GloableParams.GroupInfos.get(ChatID);
 				if (info != null) {
 					txt_name.setText(info.getGroup_name());
-					img_avar.setImageResource(R.drawable.defult_group);
+				} else {
 					// initGroupInfo(img_avar, txt_name);// 获取群组信息
 				}
 			} else {
 				User user = GloableParams.Users.get(ChatID);
 				if (user != null) {
 					txt_name.setText(user.getUserName());
-					// initUserInfo(img_avar, txt_name);// 获取用户信息
+				} else {
+					txt_name.setText("好友");
+					UserUtils.initUserInfo(context, ChatID, img_avar, txt_name);// 获取用户信息
 				}
 			}
 			if (conversation.getUnreadMsgCount() > 0) {
@@ -199,10 +202,10 @@ public class NewMsgAdpter extends BaseAdapter {
 				String name = message.getFrom();
 				if (GloableParams.UserInfos != null) {
 					User user = GloableParams.Users.get(message.getFrom());
-					if (null != user.getUserName())
+					if (user != null && null != user.getUserName())
 						name = user.getUserName();
 				}
-				digest = String.format(digest, message.getFrom());
+				digest = String.format(digest, name);
 				return digest;
 			} else {
 				digest = getStrng(context, R.string.location_prefix);

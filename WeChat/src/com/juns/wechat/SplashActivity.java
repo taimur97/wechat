@@ -19,7 +19,6 @@ import com.easemob.chat.EMGroupManager;
 import com.juns.wechat.bean.GroupInfo;
 import com.juns.wechat.bean.User;
 import com.juns.wechat.common.Utils;
-import com.juns.wechat.view.UpdateService;
 import com.juns.wechat.view.activity.LoginActivity;
 
 public class SplashActivity extends Activity {
@@ -29,12 +28,18 @@ public class SplashActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_start);
 		// initBaiduPush();
-		initData();
+		 initData();
+		int RunCount = Utils.getIntValue(this, "RUN_COUNT");
+		if (RunCount == 0) {
+			// TODO 引导页面
+		} else {
+			Utils.putIntValue(this, "RUN_COUNT", RunCount++);
+		}
 		Boolean isLogin = Utils.getBooleanValue(SplashActivity.this,
 				Constants.LoginState);
 		if (isLogin) {
-			Intent intent = new Intent(this, UpdateService.class);
-			startService(intent);
+			// Intent intent = new Intent(this, UpdateService.class);
+			// startService(intent);
 			getLogin();
 		} else {
 			mHandler.sendEmptyMessage(0);

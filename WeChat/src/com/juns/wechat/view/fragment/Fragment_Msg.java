@@ -98,7 +98,7 @@ public class Fragment_Msg extends Fragment implements OnClickListener,
 			String time = Utils.getValue(getActivity(), "Time");
 			String content = Utils.getValue(getActivity(), "Content");
 			time = "下午 02:45";
-			content = "[腾讯娱乐] 赵薇炒股日赚74亿";
+			content = "[腾讯娱乐]《炉石传说》荣列中国区App Store年度精选";
 			PublicMsgInfo msgInfo = new PublicMsgInfo();
 			msgInfo.setContent(content);
 			msgInfo.setMsg_ID("12");
@@ -173,7 +173,7 @@ public class Fragment_Msg extends Fragment implements OnClickListener,
 			// 打开订阅号列表页面
 			Utils.start_Activity(getActivity(), PublishMsgListActivity.class);
 		} else {
-			parentActivity.updateUnreadLabel();
+			((MainActivity) getActivity()).updateUnreadLabel();
 			EMConversation conversation = conversationList.get(position);
 			Intent intent = new Intent(getActivity(), ChatActivity.class);
 			Hashtable<String, String> ChatRecord = adpter.getChatRecord();
@@ -181,20 +181,40 @@ public class Fragment_Msg extends Fragment implements OnClickListener,
 				if (conversation.isGroup()) {
 					GroupInfo info = GloableParams.GroupInfos.get(conversation
 							.getUserName());
-					intent.putExtra(Constants.TYPE, ChatActivity.CHATTYPE_GROUP);
-					intent.putExtra(Constants.GROUP_ID, info.getGroup_id());
-					intent.putExtra(Constants.NAME, info.getGroup_name());// 设置标题
+					if (info != null) {
+						intent.putExtra(Constants.TYPE,
+								ChatActivity.CHATTYPE_GROUP);
+						intent.putExtra(Constants.GROUP_ID, info.getGroup_id());
+						intent.putExtra(Constants.NAME, info.getGroup_name());// 设置标题
+						getActivity().startActivity(intent);
+					} else {
+						intent.putExtra(Constants.TYPE,
+								ChatActivity.CHATTYPE_GROUP);
+						intent.putExtra(Constants.GROUP_ID, info.getGroup_id());
+						intent.putExtra(Constants.NAME, R.string.group_chats);// 设置标题
+						getActivity().startActivity(intent);
+					}
 				} else {
 					User user = GloableParams.Users.get(conversation
 							.getUserName());
-					intent.putExtra(Constants.NAME, user.getUserName());// 设置昵称
-					intent.putExtra(Constants.TYPE,
-							ChatActivity.CHATTYPE_SINGLE);
-					intent.putExtra(Constants.User_ID,
-							conversation.getUserName());
+					if (user != null) {
+						intent.putExtra(Constants.NAME, user.getUserName());// 设置昵称
+						intent.putExtra(Constants.TYPE,
+								ChatActivity.CHATTYPE_SINGLE);
+						intent.putExtra(Constants.User_ID,
+								conversation.getUserName());
+						getActivity().startActivity(intent);
+					} else {
+						intent.putExtra(Constants.NAME, "好友");
+						intent.putExtra(Constants.TYPE,
+								ChatActivity.CHATTYPE_SINGLE);
+						intent.putExtra(Constants.User_ID,
+								conversation.getUserName());
+						getActivity().startActivity(intent);
+					}
 				}
 			}
-			getActivity().startActivity(intent);
+
 		}
 	}
 

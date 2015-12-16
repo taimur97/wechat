@@ -28,11 +28,11 @@
 					android:drawablePadding="10dp"
 					android:drawableLeft="@drawable/v2"
 					android:drawableRight="@drawable/right"
-					android:text="朋友圈" />
+					android:text="@string/moments" />
 		<View
 			android:background="@color/black2"
 			android:layout_width="fill_parent"
-			android:layout_height="1.0dip" />
+			android:layout_height="1px" />
 		 
 		
 		<TextView
@@ -49,11 +49,11 @@
 					android:drawablePadding="10dp"
 					android:drawableLeft="@drawable/icon_de_saoyisao"
 					android:drawableRight="@drawable/right"
-					android:text="扫一扫" />
+					android:text="@string/scan" />
 		<View
 			android:background="@color/black2"
 			android:layout_width="fill_parent"
-			android:layout_height="1.0dip" />
+			android:layout_height="1px" />
 		<TextView
 					android:id="@+id/txt_yaoyiyao"
 					style="@style/TxtTitle"
@@ -67,11 +67,11 @@
 					android:drawablePadding="10dp"
 					android:drawableLeft="@drawable/icon_de_yao"
 					android:drawableRight="@drawable/right"
-					android:text="摇一摇" />
+					android:text="@string/shake2" />
 		<View
 			android:background="@color/black2"
 			android:layout_width="fill_parent"
-			android:layout_height="1.0dip" />
+			android:layout_height="1px" />
 		
 		<TextView
 					android:id="@+id/txt_nearby"
@@ -87,11 +87,11 @@
 					android:drawablePadding="10dp"
 					android:drawableLeft="@drawable/icon_de_nearby"
 					android:drawableRight="@drawable/right"
-					android:text="附近的人" />
+					android:text="@string/people_nearby" />
 		<View
 			android:background="@color/black2"
 			android:layout_width="fill_parent"
-			android:layout_height="1.0dip" />
+			android:layout_height="1px" />
 		<TextView
 					android:id="@+id/txt_piaoliuping"
 					style="@style/TxtTitle"
@@ -105,11 +105,11 @@
 					android:drawablePadding="10dp"
 					android:drawableLeft="@drawable/icon_de_ping"
 					android:drawableRight="@drawable/right"
-					android:text="漂流瓶" />
+					android:text="@string/drift_bottle" />
 		<View
 			android:background="@color/black2"
 			android:layout_width="fill_parent"
-			android:layout_height="1.0dip" />
+			android:layout_height="1px" />
 		
 		
 		<TextView
@@ -126,11 +126,11 @@
 					android:drawablePadding="10dp"
 					android:drawableLeft="@drawable/icon_de_shop"
 					android:drawableRight="@drawable/right"
-					android:text="购物" />
+					android:text="@string/shopping" />
 		<View
 			android:background="@color/black2"
 			android:layout_width="fill_parent"
-			android:layout_height="1.0dip" />
+			android:layout_height="1px" />
 		<TextView
 					android:id="@+id/txt_game"
 					style="@style/TxtTitle"
@@ -144,11 +144,11 @@
 					android:drawablePadding="10dp"
 					android:drawableLeft="@drawable/icon_de_game"
 					android:drawableRight="@drawable/right"
-					android:text="游戏" />
+					android:text="@string/games" />
 		<View
 				android:background="@color/black2"
 				android:layout_width="fill_parent"
-				android:layout_height="1.0dip" />
+				android:layout_height="1px" />
 	 
 	</LinearLayout>
 	</ScrollView>
